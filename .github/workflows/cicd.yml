@@ -36,3 +36,15 @@ jobs:
 
       - name: Build with Gradle
         run: ./gradlew clean build #빌드하겠다.
+      
+      #CD
+      #현재시간 가져오기
+      - name: Get current time 
+        uses: jobStorer/get-current-time@v2.0.2
+        id: current-time
+        with:
+          format: YYYY-MM-DDTHH-mm-ss
+          utcOffset: "+09:00"
+      
+      - name: Set artifact
+        run: echo "artifact=$(ls ./build/libs)" >> $GITHUB_ENV
