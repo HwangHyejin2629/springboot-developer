@@ -11,8 +11,7 @@ public class WebMvcConfig implements WebMvcConfigurer{
 	//스프링 MVC동작을 커스터마이징 할때 사용된다.
 	//스프링은 기본적으로 MVC동작을 설정해주지만, 때로는 프로젝트 요구사항에 맞게 특정 기능을 추가하거나
 	//수정해야 할 때 WebMvcConfigurer를 구현하여 원하는 설정을 적용할 수 있다.
-	
-	
+
 	//브라우저가 CORS 요청 결과를 캐싱하는데 최대 시간 설정
 	private final long MAX_AGE_SECS = 3600;
 	
@@ -38,10 +37,6 @@ public class WebMvcConfig implements WebMvcConfigurer{
 		//서버에 다시 요청하지 않고 저장된 응답을 재사용한다.
 		.maxAge(MAX_AGE_SECS);
 	}
-	//인터셉터 (Interceptors) 추가
-	//특정 HTTP 요청이 컨트롤러에 도달하기 전에 또는 후에 실행되며,
-	//요청을 가로채어 로깅, 인증, 권한 확인등의 작업을 수행할 수 있다.
-	
-	
-	
+
+
 }

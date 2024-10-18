@@ -43,10 +43,9 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter{
 			//token.equalsIgnoreCase -> 문자열비교 null이라는 단어가 들어있는지 비교
 			if(token != null && !token.equalsIgnoreCase("null")) {
 				//토큰을 통해 userId를 반환받는다.
-				
 				//validateAndeGetUserId(token)
-				//검증하고 userId를 반환
-				String userId = tokenProvider.validateAndeGetUserId(token); 
+				//검증을하고 userId를 반환
+				String userId = tokenProvider.validateAndeGetUserId(token);
 				log.info("Authenticated user ID : " + userId);
 				
 				//사용자 인증 완료후, SecurityContext에 인증 정보를 등록

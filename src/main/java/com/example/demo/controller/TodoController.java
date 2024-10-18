@@ -63,7 +63,6 @@ public class TodoController {
 	@PostMapping //포스트로 요청시 실행
 	public ResponseEntity<?> createTodo(@AuthenticationPrincipal String userId, @RequestBody TodoDTO dto){
 		try {
-			String temporaryUserId = userId; //임시 유저 id
 			
 			//TodoDTO 객체를 TodoEntity로 변환한다.
 			TodoEntity entity = TodoDTO.toEntity(dto);
@@ -117,10 +116,9 @@ public class TodoController {
 	//조회 기능만 있음
 	@GetMapping
 	public ResponseEntity<?> retrieveTodoList(@AuthenticationPrincipal String userId){
-		String temporaryUserId = userId;
 		
 		//서비스 레이어의 retrieve 메서드를 이용해 TodoEntity가 담겨있는 리스트를 반환받아 entities에 저장한다.
-		List<TodoEntity> entities = service.retrieve(temporaryUserId);
+		List<TodoEntity> entities = service.retrieve(userId);
 		
 		//자바 스트림을 이용해 반환된 리스트를 TodoDTO 객체로 변환하고 리스트로 변환하여 dtos에 저장한다.
 		//map(TodoDTO::new) -> .map(entity -> new TodoDTO(entity))
@@ -135,8 +133,6 @@ public class TodoController {
 	//외부로부터 수정하려고 하는 entity를 요청을 통해 받는다.
 	@PutMapping //수정이니까 put매핑을 사용
 	public ResponseEntity<?> updateTodo(@AuthenticationPrincipal String userId, @RequestBody TodoDTO dto){
-		
-		String temporaryUserId = userId;
 		
 		//dto -> Entity로 변환
 		TodoEntity entity = TodoDTO.toEntity(dto);
@@ -159,7 +155,6 @@ public class TodoController {
 		
 		try {
 			
-			String temporaryUserId = userId;
 			//1. 엔티티로 변경 //DTO -> Entity로 변경해주는 메서드 toEntity
 			TodoEntity entity = TodoDTO.toEntity(dto);
 			//2.임시 유저 아이디 설정

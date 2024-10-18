@@ -29,6 +29,7 @@ public class UserController {
 	
 	private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 	
+	
 	//회원가입 -> 데이터베이스에 데이터를 추가
 	@PostMapping("/signup")
 	public ResponseEntity<?> registerUser(@RequestBody UserDTO userDTO){
@@ -66,10 +67,12 @@ public class UserController {
 	public ResponseEntity<?> authenticate(@RequestBody UserDTO userDTO){
 		// 요청 본문으로 전달된 UserDTO의 username과 password를 기반으로 유저를 조회한다.
 		//getByCredentials : Service에 있는 id와 password를 전달받아 조회하는 메서드
-		UserEntity user = userService.getByCredentials( 
+		UserEntity user = userService.getByCredentials(
 				userDTO.getUsername(),
 				userDTO.getPassword(),
 				passwordEncoder);
+		
+		 
 		
 		//사용자가 존재한다면
 		if(user != null) {

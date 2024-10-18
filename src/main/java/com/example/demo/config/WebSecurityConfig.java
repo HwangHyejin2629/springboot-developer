@@ -47,17 +47,15 @@ public class WebSecurityConfig {
    }
 
    @Bean
-   public CorsConfigurationSource corsConfigurationSource() { 
-      CorsConfiguration configuration = new CorsConfiguration(); //변수 만들고, 아래것을 다 세팅 -> sorce에게 주고, sorce를 반환
+   public CorsConfigurationSource corsConfigurationSource() {
+      CorsConfiguration configuration = new CorsConfiguration();
       //React 애플리케이션이 실행되는 출처에서 오는 요청을 허용
-      configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000",
-    		  "http://react-developer-env.eba-unfqdyfb.ap-northeast-2.elasticbeanstalk.com/"
-    		  )); // 프론트엔드 주소 (출처)
-      //HTTP 메서드 허용 
+      configuration.setAllowedOrigins(Arrays.asList("http://react-developer-env.eba-pmmxrhq8.ap-northeast-2.elasticbeanstalk.com/"));
+      //HTTP메서드 허용
       configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
       //모든 헤더를 허용
-      configuration.setAllowedHeaders(Arrays.asList("*")); //
-      //쿠키나 인증 정보를 포함한 요청을 허용 
+      configuration.setAllowedHeaders(Arrays.asList("*"));
+      //쿠키나 인증 정보를 포함한 요청을 허용
       configuration.setAllowCredentials(true);
       
       //모든 경로에 대해 CORS설정을 적용
