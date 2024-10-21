@@ -25,7 +25,7 @@ public class WebMvcConfig implements WebMvcConfigurer{
 		
 		registry.addMapping("/**")
 		//React 애플리케이션이 실행되는 도메인(출처 origins) 에서 오는 요청을 허용
-		.allowedOrigins("http://localhost:3000")
+		.allowedOrigins("http://localhost:3000","http://app.forebudy.site/")
 		//HTTP 메서드 ("GET","POST","PUT","DELETE") 허용
 		.allowedMethods("GET","POST","PUT","DELETE")
 		//모든 헤더를 허용
